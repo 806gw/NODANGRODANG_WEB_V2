@@ -14,30 +14,16 @@ import { FileModule } from './file/file.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => {
-        const dbHost = configService.get<string>('DB_HOST');
-        const dbPort = configService.get<number>('DB_PORT');
-        const dbUsername = configService.get<string>('DB_USERNAME');
-        const dbPassword = configService.get<string>('DB_PASSWORD');
-        const dbDatabase = configService.get<string>('DB_DATABASE');
-
-        console.log('DB_HOST:', dbHost);
-        console.log('DB_PORT:', dbPort);
-        console.log('DB_USERNAME:', dbUsername);
-        console.log('DB_PASSWORD:', dbPassword);
-        console.log('DB_DATABASE:', dbDatabase);
-
-        return {
-          type: 'mysql',
-          host: dbHost,
-          port: dbPort,
-          username: dbUsername,
-          password: dbPassword,
-          database: dbDatabase,
-          entities: [__dirname + '/**/*.entity.{js,ts}'],
-          synchronize: true,
-        };
-      },
+      useFactory: (configService: ConfigService) => ({
+        type: 'mysql',
+        host: 'CDC-team-db.mysql.database.azure.com',
+        port: 3306,
+        username: 'adminuser@CDC-team',
+        password: 'cloud24admin!!',
+        database: 'cdc',
+        entities: [__dirname + '/**/*.entity.{js,ts}'],
+        synchronize: true,
+      }),
       inject: [ConfigService],
     }),
     AuthModule,
