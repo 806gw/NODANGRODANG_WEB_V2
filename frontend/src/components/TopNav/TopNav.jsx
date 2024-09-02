@@ -41,7 +41,6 @@ function TopNav({ isLoggedIn, setIsLoggedIn }) {
           </>
         ) : (
           <>
-            <h1 className={styles.navText}>씨다씨</h1>
             <Link to="/signin">
               <Button style={{ width: "100%" }}>로그인</Button>
             </Link>

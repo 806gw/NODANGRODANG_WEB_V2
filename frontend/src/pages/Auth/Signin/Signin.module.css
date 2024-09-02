@@ -10,7 +10,7 @@
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  width: 350px;
+  width: 380px;
 }
 
 .title {
@@ -18,6 +18,7 @@
   font-size: 28px;
   text-align: center;
   color: #333;
+  font-weight: 900;
 }
 
 .inputGroup {
