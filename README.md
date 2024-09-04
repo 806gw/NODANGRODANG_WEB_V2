@@ -1,237 +1,43 @@
-# CDC(씨다씨) - 노랑로당 🌻
+# 노랑로당 🌻
 
-해커그라운드 해커톤에 참여하는 CDC(씨다씨)팀의 노랑로당 🌻입니다.
+## 주요 기능 및 특징, 기대 효과
 
-## 참고 문서
+### 프로젝트 개요
 
-> 아래 두 링크는 해커톤에서 앱을 개발하면서 참고할 만한 문서들입니다. 이 문서들에서 언급한 서비스 이외에도 더 많은 서비스들이 PaaS, SaaS, 서버리스 형태로 제공되니 참고하세요.
+프로젝트 배경 📖
 
-- [순한맛](./REFERENCES_BASIC.md)
-- [매운맛](./REFERENCES_ADVANCED.md)
+ 지방의 고령화 문제는 단순히 고령자 수의 증가로 끝나지 않습니다. 지역 주민들이 이용하는 경로당과 같은 공공시설들은 관리가 어렵고, 때로는 존재조차 인식되지 못하고 있습니다. 특히, 수도권에 비해 열악한 상황에 처한 지방은 이러한 문제에 더욱 취약합니다.
 
-## 제품/서비스 소개
+ 이러한 현실을 바꾸기 위해, 저희는 지도 서비스에 등록되지 않은 경로당을 발굴하고, 해당 시설의 상태를 점검해 지방 주민들이 보다 편리하게 공공서비스를 이용할 수 있는 서비스를 설계하고자 합니다.
 
-<!-- 아래 링크는 지우지 마세요 -->
+🚀 경로당 탐색 및 관리 솔루션
 
-[제품/서비스 소개 보기](TOPIC.md)
+ 지방 고령화 지역의 경로당, 더 이상 방치되지 않습니다. 저희 CDC 팀은 지도에 등록되지 않은 경로당을 찾아내고, 그 상태를 점검하며, 공공서비스의 질을 향상시키기 위한 서비스를 설계합니다.
 
-<!-- 위 링크는 지우지 마세요 -->
+### 주요 기능
 
-## 오픈 소스 라이센스
+1. 미등록 경로당 탐색 🔍
 
-<!-- 아래 링크는 지우지 마세요 -->
+ 현재 많은 경로당이 공공 데이터에 등록되지 않아 주민들이 이를 쉽게 이용하지 못하는 경우가 많습니다. 저희 서비스는 이러한 미등록 경로당을 탐색하여 지도에 등록하고, 사용자들이 손쉽게 경로당을 찾아갈 수 있도록 지원합니다. 이를 통해 지역 내 모든 경로당이 효율적으로 활용될 수 있도록 돕고, 주민들의 생활 편의성을 높이는 데 기여합니다.
 
-[오픈소스 라이센스 보기](./LICENSE)
+2. 경로당 상태 점검 📋
 
-<!-- 위 링크는 지우지 마세요 -->
+ 기존의 여행 앱처럼, 경로당의 상태를 시각적으로 확인할 수 있는 기능을 제공합니다. 사용자는 지도에서 경로당을 클릭하면, 해당 시설의 에어컨, 선풍기, 보일러 등 주요 공공물품의 정보를 한눈에 파악할 수 있습니다.
 
-## 설치 방법
+3. 경로당 평점 시스템 ⭐
 
-### 사전 준비 사항
+ 크롤링한 데이터를 기반으로 경로당 정보를 분석하고, 평점과 댓글 데이터를 활용한 AI를 통해 개선 방안을 제시하는 서비스를 구축합니다. 이 서비스는 지역 주민들이 공공시설을 보다 효율적으로 이용할 수 있도록 돕고, 지자체가 필요한 개선 조치를 빠르게 취할 수 있도록 지원합니다. 이를 통해 공공시설의 품질을 향상시키고, 주민들의 만족도를 높이는 데 기여할 수 있을 것입니다.
 
-- GitHub Account
-- Visual Studio Code
-- GitHub CLI
-- Azure CLI
-- Azure Developer CLI
-- Azure Account
-- Azure Resource Group
-- Node js
-- npm
-- pnpm
-- yarn
+### 기대 효과
 
-## AI 및 DB 시작하기
+📈 공공서비스 접근성 향상
 
-> **Note**. Github Actions와 Bicep을 사용하였습니다
+ 지방 고령화 지역 주민들이 더 쉽게 경로당과 같은 공공시설을 찾아 이용할 수 있게 되어, 공공서비스 접근성이 크게 향상될 것입니다.
 
-1. 이 리포지토리를 포크하고 다음 명령어로 클론합니다.
+🛠 공공시설 관리 효율화
 
-```ps1
-$GITHUB_USERNAME = "{{자신의 GitHub ID}}"
-git clone https://github.com/$GITHUB_USERNAME/hg-CDC-team.git
-cd hg-CDC-team
-```
+ 평가 및 점검 시스템을 통해 지자체가 보다 효율적으로 공공시설을 관리할 수 있게 됩니다. 이를 통해 시설 관리의 사각지대를 줄이고, 지역사회 전체의 서비스 품질을 높일 수 있습니다.
 
-2. 다음과 같이 에저를 프로비저닝 합니다. (윈도우 기준)
+🤝 지역사회와의 상호작용 강화
 
-```ps1
-$AZURE_ENV_NAME="CDC-team"
-$AZURE_LOCATION="koreacentral"
-$AZURE_RESOURCE_GROUP="rg-CDC-team"
-
-az login
-azd auth login
-azd init -e $AZURE_ENV_NAME
-azd env set AZURE_ENV_NAME $AZURE_ENV_NAME
-azd env set AZURE_LOCATION $AZURE_LOCATION
-azd env set AZURE_RESOURCE_GROUP $AZURE_RESOURCE_GROUP
-azd config set alpha.resourceGroupDeployments on
-
-# azd up을 하기전 생성된 azure.yaml파일을 아래와 같이 수정해주세요.
-name: hg-CDC-team
-
-infra:
-  provider: "bicep"
-  path: "infra"
-  module: "main"
-
-pipeline:
-  provider: "github"
-
-# Deploy
-azd up
-```
-
-3. 다음과 같이 github workflow 시크릿을 설정합니다. (윈도우 기준)
-
-```ps1
-# AI Deploy
-az webapp deployment list-publishing-profiles --name "$AZURE_ENV_NAME-ai" --resource-group $AZURE_RESOURCE_GROUP --xml > ai_publish_profile.xml
-
-gh auth login
-gh secret set AZURE_AI_APP_NAME --repo hackersground-kr/hg-CDC-team --body "${AZURE_ENV_NAME}-ai"
-cat ai_publish_profile.xml | gh secret set AZURE_AI_WEBAPP_PUBLISH_PROFILE --repo hackersground-kr/hg-CDC-team
-```
-
-4. 포크한 리포지토리의 Github Push를 해 Actions를 활성화 해줍니다.
-
-```
-git add .
-git commit -m "initial commit"
-git push origin main
-```
-
-5. 깃허브에 접속해 github actions workflow를 실행을 확인합니다.
-
-6. 배포가 완료될때까지 기다립니다. (10분 가량 소요됩니다.)
-7. 다음과 같이 백엔드 배포를 확인합니다.
-
-```ps1
-iwr https://$AZURE_ENV_NAME-ai.azurewebsites.net/location
-```
-
-### 백엔드 시작하기
-
-1. 백엔드 폴더로 이동해줍니다.
-
-```
-cd backend # 경로의 유의 해주세요. (자신의 현재 경로에 맞게)
-```
-
-2. pnpm install 명령어를 입력해줍니다.
-
-```
-pnpm install
-```
-
-3. .env파일 설정하기 (값을 입력해주세요.)
-
-```
-DB_HOST=
-DB_PORT=
-DB_USERNAME=
-DB_PASSWORD=
-DB_DATABASE=
-JWT_SECRET=
-JWT_ACCESS_TOKEN_EXPIRATION=
-JWT_REFRESH_TOKEN_EXPIRATION=
-CONNECTION_STRING=
-```
-
-4. 백엔드를 로컬에서 실행해줍니다.
-
-```
-pnpm start:dev
-```
-
-5. 깃허브 액션에서 사용할 시크릿을 사진과 같이 설정해줍니다.
-
-<img width="885" alt="스크린샷 2024-08-27 오전 7 36 12" src="https://github.com/user-attachments/assets/d5ecd69f-57d3-4dd5-bfc8-15a5d774649c">
-
-6. 깃허브 액션 파일이 작성되어있으니 `git push`를 통해 액션을 돌립니다.
-   <img width="1785" alt="스크린샷 2024-08-27 오전 7 38 43" src="https://github.com/user-attachments/assets/2c97d756-3a44-407d-bb51-50a2c8469fe7">
-
-   `다음과 같이 성공된 모습을 볼 수 있습니다.`
-
-### 프론트엔드 시작하기
-
-1. 프론트엔드 폴더로 이동해줍니다.
-
-```
-
-cd frontend # 경로의 유의 해주세요. (자신의 현재 경로에 맞게)
-
-```
-
-2. 환경변수를 설정해줍니다.
-
-```
-
-REACT_APP_KAKAO_KEY=746c698dca1feb40e6d1748fc65304af # 맵 키
-
-```
-
-3. yarn 명령어를 입력해줍니다.
-
-```
-
-yarn
-
-```
-
-4. yarn 명령어를 이용해 프론트엔드를 시작해줍니다.
-
-```
-
-yarn start # 로컬에서 잘 실행되는지 확인 해주세요.
-
-```
-
-5. 로컬에서 잘 실행된다면 배포단계로 넘어갑니다
-
-<img alt="스크린샷 2024-08-27 오전 12 37 42" src="https://github.com/user-attachments/assets/affb9106-16b1-443b-af18-fd6e10b96c9b">
-
-`Azure Portal에 접속해 App Service를 클릭합니다.`
-
-<img width="317" alt="스크린샷 2024-08-27 오전 12 39 05" src="https://github.com/user-attachments/assets/b6ec7fb3-2331-43a2-8612-f8e36db7da83">
-
-`App Service에서 만들기 > "웹 앱" 을 선택해줍니다.`
-<img width="815" alt="스크린샷 2024-08-27 오전 12 40 07" src="https://github.com/user-attachments/assets/724efbb5-fdd2-4792-99be-c5c62490ba23">
-
-`만들기 메뉴에서 위 사진과 같이 리소스 그룹, 인스턴스 정보 게시 등 별표가 있는 필수요소를 입력해줍니다.`
-<img width="799" alt="스크린샷 2024-08-27 오전 12 40 57" src="https://github.com/user-attachments/assets/40491b82-efaf-44ba-a212-025adef90a70">
-`다음으로 태그 를 입력해줍니다.`
-<img width="466" alt="스크린샷 2024-08-27 오전 12 41 16" src="https://github.com/user-attachments/assets/b0871440-5736-4f68-b890-a3ff5b7f1112">
-
-`마지막으로 검토 후 만들기를 누릅니다.`
-<img width="411" alt="스크린샷 2024-08-27 오전 12 41 31" src="https://github.com/user-attachments/assets/e9a9b3d4-ea2c-4f4a-89af-58ffe385ccd9">
-
-`생성이 될때 까지 잠시 기다린 후 Go to resource를 눌러줍니다. (리소스 보러 가기)`
-
-<img width="673" alt="스크린샷 2024-08-27 오전 12 41 41" src="https://github.com/user-attachments/assets/5d695642-f69f-43a8-a2d7-60d913b17179">
-
-`다음으로 VSCode를 열어주고 위의 3가지 익스텐션을 설치 해줍니다.`
-
-<img width="338" alt="스크린샷 2024-08-27 오전 12 41 49" src="https://github.com/user-attachments/assets/42be9130-0c8c-4868-9094-594fe27afb6f">
-
-`설치 후 Azure Icon을 눌러서 Sign in to Azure를 눌러줍니다.`
-
-<img width="244" alt="스크린샷 2024-08-27 오전 12 42 09" src="https://github.com/user-attachments/assets/a4633d80-c26a-48e1-b875-bbccc2257562">
-
-`Azure에 로그인 후 AppService Icon을 눌러 주고 배포할 AppService를 오른쪽 클릭해  Deploy to WEB App을 클릭해 줍니다.`
-<img width="496" alt="스크린샷 2024-08-27 오전 12 42 16" src="https://github.com/user-attachments/assets/a2014fbe-35b9-4cc2-8567-a95985c0af14">
-
-`다음으로 Browser로 클릭해주고 "빌드한" 리액트 프로젝트의 "build 폴더" 를 클릭해줍니다.`
-
-<img width="291" alt="스크린샷 2024-08-27 오전 12 42 56" src="https://github.com/user-attachments/assets/fd52d258-7520-40be-b09e-06b6c8c5e40b">
-
-`그 후 Deploy와 Browse Website를 눌러 배포 상태를 확인합니다.`
-
-<img width="1782" alt="스크린샷 2024-08-27 오전 7 13 26" src="https://github.com/user-attachments/assets/84a133f0-a834-4a5f-9589-9f523beec95a">
-
-`다음과 같이 배포가 잘 된 모습을 볼 수 있습니다.`
-
-```
-
-```
+ 단순한 정보 제공을 넘어, 지역 주민들과의 상호작용을 통해 공공서비스의 질적 향상을 추구합니다. 더 나아가 지방 자치단체와의 협력을 통해 지역사회의 지속 가능한 발전에 기여하고자 합니다.
