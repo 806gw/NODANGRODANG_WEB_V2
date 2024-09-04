@@ -29,12 +29,12 @@ function TopNav({ isLoggedIn, setIsLoggedIn }) {
         </Link>
         {isLoggedIn ? (
           <>
-            <Link to="/posts" className={styles.Link}>
+            {/* <Link to="/posts" className={styles.Link}>
               게시글
             </Link>
             <Link to="/profile" className={styles.Link}>
               프로필
-            </Link>
+            </Link> */}
             <Button onClick={handleLogout} style={{ width: "auto" }}>
               로그아웃
             </Button>

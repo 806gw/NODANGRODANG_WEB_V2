@@ -1,4 +1,0 @@
-{
-  "appService.defaultWebAppToDeploy": "/subscriptions/d9d56081-5f3d-451b-9fa5-1a43e192ca03/resourceGroups/rg-jinseung/providers/Microsoft.Web/sites/jinseung-web",
-  "appService.deploySubpath": "frontend/build"
-}

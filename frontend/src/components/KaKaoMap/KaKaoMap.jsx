@@ -20,7 +20,6 @@ function KaKaoMap() {
   const navigate = useNavigate();
   const placeService = useRef(null);
   const location = useLocation();
-  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
 
   const { posts, fetchPosts } = usePost();
 
@@ -286,17 +285,10 @@ function KaKaoMap() {
     currentMarkerRef.current = marker;
   };
 
-  const toggleSearchBar = () => {
-    setIsSearchBarVisible(!isSearchBarVisible);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
-        <button onClick={toggleSearchBar} className={styles.navButton}>
-          <img src={SearchIcon} alt="Search" className={styles.searchIcon} />
-        </button>
-        {isSearchBarVisible && (
+        <div className={styles.FormContainer}>
           <form onSubmit={handleSearch} className={styles.searchForm}>
             <input
               type="text"
@@ -313,9 +305,9 @@ function KaKaoMap() {
               />
             </button>
           </form>
-        )}
+        </div>
       </div>
-      {isSearchBarVisible && searchResults.length > 0 && (
+      {searchResults.length > 0 && (
         <div className={styles.searchResultsContainer}>
           <ul className={styles.searchResultList}>
             {searchResults.map((item, index) => (

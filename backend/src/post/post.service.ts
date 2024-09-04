@@ -10,7 +10,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './entities/post.entity';
 import { User } from '../auth/entities/user.entity';
-import { FilesAzureService } from '../file/file.azure.service';
+import { ImageService } from '../image/image.service';
 import { Like } from 'src/like/entities/like.entity';
 import { Comment } from 'src/comment/entities/comment.entity';
 
@@ -25,7 +25,7 @@ export class PostService {
     private userRepository: Repository<User>,
     @InjectRepository(Comment)
     private commentRepository: Repository<Comment>,
-    private filesAzureService: FilesAzureService,
+    private imageService: ImageService,
   ) {}
 
   private formatPostResponse(post: Post) {
@@ -59,9 +59,10 @@ export class PostService {
       throw new NotFoundException('사용자를 찾을 수 없습니다.');
     }
 
-    const imageUrl = file
-      ? await this.filesAzureService.uploadFile(file, 'fileupload')
-      : null;
+    const imageUrl = await this.imageService.upload(
+      file.originalname,
+      file.buffer,
+    );
 
     const latitude = createPostDto.latitude;
     const longitude = createPostDto.longitude;
@@ -117,9 +118,9 @@ export class PostService {
     }
 
     if (file) {
-      const imageUrl = await this.filesAzureService.uploadFile(
-        file,
-        'fileupload',
+      const imageUrl = await this.imageService.upload(
+        file.originalname,
+        file.buffer,
       );
       post.imageUrl = imageUrl;
     }

@@ -16,7 +16,7 @@ import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { EditProfileDto } from './dto/edit-profile.dto';
-import { FilesAzureService } from '../file/file.azure.service';
+import { ImageService } from '../image/image.service';
 
 @Injectable()
 export class AuthService {
@@ -25,7 +25,7 @@ export class AuthService {
     private userRepository: Repository<User>,
     private jwtService: JwtService,
     private configService: ConfigService,
-    private filesAzureService: FilesAzureService,
+    private imageService: ImageService,
   ) {}
 
   async signup(signupDto: SignupDto) {
@@ -145,9 +145,9 @@ export class AuthService {
 
     if (image) {
       try {
-        const imageUrl = await this.filesAzureService.uploadFile(
-          image,
-          'fileupload',
+        const imageUrl = await this.imageService.upload(
+          image.originalname,
+          image.buffer,
         );
         profile.imageUri = imageUrl;
       } catch (error) {

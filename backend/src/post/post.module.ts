@@ -8,11 +8,13 @@ import { LikeModule } from 'src/like/like.module';
 import { Like } from 'src/like/entities/like.entity';
 import { User } from 'src/auth/entities/user.entity';
 import { Comment } from 'src/comment/entities/comment.entity';
+import { ImageModule } from 'src/image/image.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Post, Like, User, Comment]),
     AuthModule,
+    ImageModule,
     LikeModule,
   ],
   controllers: [PostController],

@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { LikeModule } from './like/like.module';
-import { FileModule } from './file/file.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
@@ -16,11 +16,11 @@ import { FileModule } from './file/file.module';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
-        host: 'CDC-team-db.mysql.database.azure.com',
-        port: 3306,
-        username: 'adminuser@CDC-team',
-        password: 'cloud24admin!!',
-        database: 'cdc',
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
         entities: [__dirname + '/**/*.entity.{js,ts}'],
         synchronize: true,
       }),
@@ -30,7 +30,7 @@ import { FileModule } from './file/file.module';
     PostModule,
     CommentModule,
     LikeModule,
-    FileModule,
+    ImageModule,
   ],
   controllers: [AppController],
   providers: [ConfigService],
