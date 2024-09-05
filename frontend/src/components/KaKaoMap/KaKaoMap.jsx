@@ -306,25 +306,27 @@ function KaKaoMap() {
             </button>
           </form>
         </div>
+        {searchResults.length > 0 && (
+          <div className={styles.searchResultsContainer}>
+            <ul className={styles.searchResultList}>
+              {searchResults.map((item, index) => (
+                <li
+                  key={item.id}
+                  onClick={() => handleSearchItemClick(item)}
+                  className={styles.searchResultItem}
+                >
+                  <div className={styles.searchResultTitle}>{`${index + 1}. ${
+                    item.title
+                  }`}</div>
+                  <div className={styles.searchResultAddress}>
+                    {item.address}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-      {searchResults.length > 0 && (
-        <div className={styles.searchResultsContainer}>
-          <ul className={styles.searchResultList}>
-            {searchResults.map((item, index) => (
-              <li
-                key={item.id}
-                onClick={() => handleSearchItemClick(item)}
-                className={styles.searchResultItem}
-              >
-                <div className={styles.searchResultTitle}>{`${index + 1}. ${
-                  item.title
-                }`}</div>
-                <div className={styles.searchResultAddress}>{item.address}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
       <div className={styles.mapContainer}>
         <div id="map" className={styles.map}></div>
         <div className={styles.buttonContainer}>
