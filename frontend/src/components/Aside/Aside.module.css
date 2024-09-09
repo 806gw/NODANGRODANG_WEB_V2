@@ -1,0 +1,43 @@
+.menu {
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.closeMenu {
+    font-size: 32px;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.aside {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 70px;
+}
+
+.header>img {
+    width: 40px;
+    margin-left: 10px;
+}
+
+.aside.open {
+    left: 0;
+}

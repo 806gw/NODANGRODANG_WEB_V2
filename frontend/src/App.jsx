@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import NotFoundPage from "./pages/NotFound/404";
@@ -19,9 +19,16 @@ function App() {
     !!localStorage.getItem("accessToken")
   );
 
+  const location = useLocation();
+
+  const hideNavPaths = ["/"];
+  const showTopNav = !hideNavPaths.includes(location.pathname);
+
   return (
     <div className="App">
-      <TopNav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      {showTopNav && (
+        <TopNav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      )}
       <Routes>
         <Route
           path="/"

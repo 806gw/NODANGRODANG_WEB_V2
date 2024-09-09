@@ -8,6 +8,7 @@ import CurrentLocationIcon from "../../assets/images/current-location-icon.png";
 import WritePostIcon from "../../assets/images/write-post-icon.png";
 import usePost from "../../hooks/usePost";
 import PostDetail from "../../pages/Post/PostDetail/PostDetail";
+import Aside from "../Aside/Aside";
 
 function KaKaoMap() {
   const [map, setMap] = useState(null);
@@ -288,6 +289,12 @@ function KaKaoMap() {
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
+        <div className={styles.asideContainer}>
+          <aside>
+            <Aside />
+            노당<span>로당 🌻</span>
+          </aside>
+        </div>
         <div className={styles.FormContainer}>
           <form onSubmit={handleSearch} className={styles.searchForm}>
             <input
